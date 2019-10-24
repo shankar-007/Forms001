@@ -16,6 +16,10 @@
 		B76045F32361777C00C1634E /* SampleTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76045F22361777C00C1634E /* SampleTestUITests.swift */; };
 		B7604601236177D000C1634E /* TrackerInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7604600236177D000C1634E /* TrackerInfoViewController.swift */; };
 		B7604605236177EC00C1634E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7604604236177EC00C1634E /* BaseViewController.swift */; };
+		B760461B236184A700C1634E /* IBDesignableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760461A236184A700C1634E /* IBDesignableExtension.swift */; };
+		B760461E23618B7900C1634E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760461D23618B7900C1634E /* Constant.swift */; };
+		B760461F23618B7900C1634E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760461D23618B7900C1634E /* Constant.swift */; };
+		B760462023618B7900C1634E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760461D23618B7900C1634E /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,8 @@
 		B76045F42361777C00C1634E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7604600236177D000C1634E /* TrackerInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerInfoViewController.swift; sourceTree = "<group>"; };
 		B7604604236177EC00C1634E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B760461A236184A700C1634E /* IBDesignableExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IBDesignableExtension.swift; path = ../../../../../../../../Downloads/IOS/QIC/Source/General/Extensions/IBDesignableExtension.swift; sourceTree = "<group>"; };
+		B760461D23618B7900C1634E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				B760460C23617B0200C1634E /* Resources */,
-				B760460B23617AB100C1634E /* Business Modules */,
+				B76046182361843800C1634E /* Source */,
 			);
 			path = SampleTest;
 			sourceTree = "<group>";
@@ -233,6 +239,56 @@
 				B76045D22361777B00C1634E /* AppDelegate.swift */,
 			);
 			path = "App Delegate";
+			sourceTree = "<group>";
+		};
+		B7604615236183EF00C1634E /* General */ = {
+			isa = PBXGroup;
+			children = (
+				B760461C23618B6300C1634E /* Constant */,
+				B76046192361849300C1634E /* Extension */,
+				B76046172361840E00C1634E /* Code snippet */,
+				B76046162361840500C1634E /* Utilities */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		B76046162361840500C1634E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B76046172361840E00C1634E /* Code snippet */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Code snippet";
+			sourceTree = "<group>";
+		};
+		B76046182361843800C1634E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B760460B23617AB100C1634E /* Business Modules */,
+				B7604615236183EF00C1634E /* General */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		B76046192361849300C1634E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B760461A236184A700C1634E /* IBDesignableExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B760461C23618B6300C1634E /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				B760461D23618B7900C1634E /* Constant.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,10 +422,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B760461B236184A700C1634E /* IBDesignableExtension.swift in Sources */,
 				B7604601236177D000C1634E /* TrackerInfoViewController.swift in Sources */,
 				B7604605236177EC00C1634E /* BaseViewController.swift in Sources */,
 				B76045D52361777B00C1634E /* ViewController.swift in Sources */,
 				B76045D32361777B00C1634E /* AppDelegate.swift in Sources */,
+				B760461E23618B7900C1634E /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76045E82361777C00C1634E /* SampleTestTests.swift in Sources */,
+				B760461F23618B7900C1634E /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76045F32361777C00C1634E /* SampleTestUITests.swift in Sources */,
+				B760462023618B7900C1634E /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
