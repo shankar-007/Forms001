@@ -114,7 +114,6 @@
                                                     <constraint firstItem="npf-NE-zwu" firstAttribute="top" secondItem="5tF-Vh-jWf" secondAttribute="bottom" constant="39" id="byj-L8-Xgv"/>
                                                     <constraint firstItem="yX3-Ue-5O3" firstAttribute="trailing" secondItem="npf-NE-zwu" secondAttribute="trailing" id="eVD-0W-5L2"/>
                                                     <constraint firstAttribute="trailing" secondItem="npf-NE-zwu" secondAttribute="trailing" constant="40" id="k6b-lq-MQ9"/>
-                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Kf3-hJ-k7c" secondAttribute="bottom" constant="301" id="qYs-4F-r9V"/>
                                                     <constraint firstItem="t8i-Rf-G8K" firstAttribute="top" secondItem="agw-b6-kxM" secondAttribute="top" constant="28" id="sz3-CY-Ztq"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="t8i-Rf-G8K" secondAttribute="trailing" constant="8" id="wSM-Nq-2ri"/>
                                                 </constraints>
@@ -122,6 +121,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="agw-b6-kxM" firstAttribute="height" relation="greaterThanOrEqual" secondItem="8iu-CJ-nfH" secondAttribute="height" id="APW-9S-bUa"/>
                                             <constraint firstItem="agw-b6-kxM" firstAttribute="leading" secondItem="8iu-CJ-nfH" secondAttribute="leading" id="Dtt-38-0n4"/>
                                             <constraint firstAttribute="bottom" secondItem="agw-b6-kxM" secondAttribute="bottom" id="O9v-4l-UBm"/>
                                             <constraint firstItem="agw-b6-kxM" firstAttribute="top" secondItem="8iu-CJ-nfH" secondAttribute="top" id="OrT-4t-pTx"/>

@@ -167,7 +167,7 @@ class TrackerInfoViewController: BaseViewController {
                 if let placeMark = placemarks {
                     
                     if let place = placeMark.first {
-                        self.lblLocation.text = place.locality
+                        self.lblLocation.text = place.subLocality
                     }
                 }
         })
