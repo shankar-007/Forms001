@@ -42,12 +42,13 @@ class TrackerInfoViewController: BaseViewController {
         
         locationManager = CLLocationManager()
         
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
             
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
             
         }
         
@@ -182,10 +183,10 @@ extension TrackerInfoViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .authorizedWhenInUse:
+        case .authorizedWhenInUse, .authorizedAlways:
             manager.startUpdatingLocation()
         default:
-            showToast(message: "Location permission is disabled. Unable to find the location")
+            print("Location permission not authorized")
         }
     }
     
