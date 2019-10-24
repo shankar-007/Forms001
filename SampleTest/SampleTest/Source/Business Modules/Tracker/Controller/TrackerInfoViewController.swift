@@ -11,6 +11,8 @@ import CoreLocation
 
 class TrackerInfoViewController: BaseViewController {
     
+    
+    //Mark:- Outlet's and properties
     @IBOutlet weak var txtfieldFirstName: UITextField!
     @IBOutlet weak var txtfieldLastName: UITextField!
     @IBOutlet weak var txtfieldEmail: UITextField!
@@ -20,10 +22,14 @@ class TrackerInfoViewController: BaseViewController {
     
     var locationManager: CLLocationManager!
 
+    //Mark:- Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureData()
     }
+    
+    /// Configuring all the data and setup the data
     
     func configureData() {
         
@@ -37,6 +43,8 @@ class TrackerInfoViewController: BaseViewController {
         txtfieldLastName.delegate = self
         txtfieldEmail.delegate = self
     }
+    
+    /// Setup the location manager
     
     func setupLocationManager() {
         
@@ -54,26 +62,50 @@ class TrackerInfoViewController: BaseViewController {
         
     }
     
+    
+    /// Pull to refresh to get the location
+    
     func addPullToRefresh() {
         scrollview.refreshControl = UIRefreshControl()
         scrollview.refreshControl?.addTarget(self, action: #selector(refreshValuechanged), for: .valueChanged)
     }
+    
+    
+    /// Dismissing the keypad by touching the outside view.
     
     func addKeypadDismiss() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
+    
+    /// Objective-c selector for the dismiss keypad
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
+    
+    /// Objective-c selector for the pull to refresh value changed.
     @objc func refreshValuechanged() {
         
         self.locationManager.startUpdatingLocation()
         
         
     }
+    
+    /**
+     
+     Validating the input text fields
+     
+     Parameters:
+     - Firstname - string
+     - Lastname - string
+     - email - string
+     
+     return boolean indicating the value is passed the validation.
+ 
+    */
     
     func validateInputFields(fName: String, lName: String, email: String) -> Bool {
         
@@ -108,6 +140,20 @@ class TrackerInfoViewController: BaseViewController {
     }
     
     
+    /** Getting the user current Location places
+     
+     parameter:-
+      - latitude - double
+      - longitude - double
+     
+     return null
+     
+     it will shows the places in location place label.
+ 
+ 
+    */
+    
+    
     func getUserLocation(lat: CLLocationDegrees,long: CLLocationDegrees) {
         
         let loc: CLLocation = CLLocation(latitude: lat, longitude: long)
@@ -129,6 +175,8 @@ class TrackerInfoViewController: BaseViewController {
         
     }
     
+    //Mark:- Submit button click action
+    
     @IBAction func submitButtonClicked(_ sender: UIButton) {
         
         if validateInputFields(fName: txtfieldFirstName.text ?? "", lName: txtfieldLastName.text ?? "", email: txtfieldEmail.text ?? "") {
@@ -141,6 +189,8 @@ class TrackerInfoViewController: BaseViewController {
     }
 
 }
+
+/// Textfield delegate's when returning
 
 extension TrackerInfoViewController: UITextFieldDelegate {
     
@@ -161,6 +211,8 @@ extension TrackerInfoViewController: UITextFieldDelegate {
         return true
     }
 }
+
+/// Location manager delegate extending
 
 extension TrackerInfoViewController: CLLocationManagerDelegate {
     
