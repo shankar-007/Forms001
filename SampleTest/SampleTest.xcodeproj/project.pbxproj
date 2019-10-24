@@ -20,6 +20,8 @@
 		B760461E23618B7900C1634E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760461D23618B7900C1634E /* Constant.swift */; };
 		B760461F23618B7900C1634E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760461D23618B7900C1634E /* Constant.swift */; };
 		B760462023618B7900C1634E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760461D23618B7900C1634E /* Constant.swift */; };
+		B76046212361D1AF00C1634E /* SampleTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76045E72361777C00C1634E /* SampleTestTests.swift */; };
+		B76046242361D1D200C1634E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B76045DE2361777C00C1634E /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -395,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B76046242361D1D200C1634E /* Info.plist in Resources */,
 				B76045DD2361777C00C1634E /* LaunchScreen.storyboard in Resources */,
 				B76045DA2361777C00C1634E /* Assets.xcassets in Resources */,
 				B76045D82361777B00C1634E /* Main.storyboard in Resources */,
@@ -423,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B760461B236184A700C1634E /* IBDesignableExtension.swift in Sources */,
+				B76046212361D1AF00C1634E /* SampleTestTests.swift in Sources */,
 				B7604601236177D000C1634E /* TrackerInfoViewController.swift in Sources */,
 				B7604605236177EC00C1634E /* BaseViewController.swift in Sources */,
 				B76045D52361777B00C1634E /* ViewController.swift in Sources */,

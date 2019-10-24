@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import CoreLocation
 
 class TrackerInfoViewController: BaseViewController {
     
     @IBOutlet weak var txtfieldFirstName: UITextField!
     @IBOutlet weak var txtfieldLastName: UITextField!
     @IBOutlet weak var txtfieldEmail: UITextField!
+    @IBOutlet weak var lblAccountName: UILabel!
+    @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var scrollview: UIScrollView!
+    
+    var locationManager: CLLocationManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +26,36 @@ class TrackerInfoViewController: BaseViewController {
     }
     
     func configureData() {
+        
+        lblAccountName.text = UIDevice.current.name
+
+        addKeypadDismiss()
+        addPullToRefresh()
+        setupLocationManager()
+        
         txtfieldFirstName.delegate = self
         txtfieldLastName.delegate = self
         txtfieldEmail.delegate = self
-        addKeypadDismiss()
+    }
+    
+    func setupLocationManager() {
+        
+        locationManager = CLLocationManager()
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            
+        }
+        
+    }
+    
+    func addPullToRefresh() {
+        scrollview.refreshControl = UIRefreshControl()
+        scrollview.refreshControl?.addTarget(self, action: #selector(refreshValuechanged), for: .valueChanged)
     }
     
     func addKeypadDismiss() {
@@ -34,6 +65,13 @@ class TrackerInfoViewController: BaseViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    @objc func refreshValuechanged() {
+        
+        self.locationManager.startUpdatingLocation()
+        
+        
     }
     
     func validateInputFields(fName: String, lName: String, email: String) -> Bool {
@@ -68,6 +106,28 @@ class TrackerInfoViewController: BaseViewController {
         
     }
     
+    
+    func getUserLocation(lat: CLLocationDegrees,long: CLLocationDegrees) {
+        
+        let loc: CLLocation = CLLocation(latitude: lat, longitude: long)
+        
+        CLGeocoder().reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                if let placeMark = placemarks {
+                    
+                    if let place = placeMark.first {
+                        self.lblLocation.text = place.locality
+                    }
+                }
+        })
+
+        
+    }
+    
     @IBAction func submitButtonClicked(_ sender: UIButton) {
         
         if validateInputFields(fName: txtfieldFirstName.text ?? "", lName: txtfieldLastName.text ?? "", email: txtfieldEmail.text ?? "") {
@@ -99,4 +159,34 @@ extension TrackerInfoViewController: UITextFieldDelegate {
         
         return true
     }
+}
+
+extension TrackerInfoViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locCordinate: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        
+        print("locations = \(locCordinate.latitude) \(locCordinate.longitude)")
+        
+        manager.stopUpdatingLocation()
+        
+        self.scrollview.refreshControl?.endRefreshing()
+        
+        getUserLocation(lat: locCordinate.latitude, long: locCordinate.longitude)
+    
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        default:
+            showToast(message: "Location permission is disabled. Unable to find the location")
+        }
+    }
+    
 }
