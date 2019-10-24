@@ -1,5 +1,5 @@
 //
-//  SampleTests.swift
+//  TrackTester.swift
 //  SampleTests
 //
 //  Created by Mac HD on 24/10/19.
@@ -10,40 +10,41 @@ import XCTest
 
 @testable import SampleTest
 
-class SampleTests: XCTestCase {
+class TrackTester: XCTestCase {
     
     var trackInfoVc: TrackerInfoViewController!
-
+    
     override func setUp() {
         super.setUp()
         
         let stryBoard = UIStoryboard(name: "Main", bundle: nil)
         
         trackInfoVc = stryBoard.instantiateViewController(withIdentifier: "TrackerInfoViewControllerID") as? TrackerInfoViewController
+        
+        trackInfoVc.loadViewIfNeeded()
     }
-
+    
     override func tearDown() {
         super.tearDown()
         trackInfoVc = nil
     }
-
+    
     func testExample() {
         
-        let isValidInput = trackInfoVc.validateInputFields(fName: "vignesh", lName: "Ravichandran", email: "vickynesh210@gmail.com")
+        trackInfoVc.getUserLocation(lat: -26.2041028, long: 28.0473051)
         
-        XCTAssertTrue(isValidInput)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            XCTAssertEqual(self.trackInfoVc.lblLocation.text, "Johannesburg")
+        }
         
     }
     
-    func emailTest() {
-        XCTAssertTrue(trackInfoVc.isValidEmail(emailStr: "vg"))
-    }
-
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
 }

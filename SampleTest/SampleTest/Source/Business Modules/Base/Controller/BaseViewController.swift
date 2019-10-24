@@ -42,6 +42,7 @@ class BaseViewController: UIViewController {
             debugPrint("Ok Pressed")
             completionHandler?()
         }
+        alertController.view.accessibilityIdentifier = "Alert"
         alertController.addAction(retry)
         self.present(alertController, animated: true, completion: nil)
     }
